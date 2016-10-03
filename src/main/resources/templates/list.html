@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Spring Framework Guru</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+	<h1>Cliente</h1>
+	<div th:each="cliente : ${clientes}">
+		<p th:text="'id: ' + ${cliente.id}" />
+		<p th:text="'nome: ' + ${cliente.nome}" />
+		<p th:text="'telefone: ' + ${cliente.telefone}" />
+	</div>
+
+	<a href="/form">adicionar cliente</a>
+</body>
+</html>

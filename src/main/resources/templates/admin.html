@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head lang="pt-br">
+		<title>Cadastro de Candidatos</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+		<script th:src="@{/js/jquery.js}"></script>
+		<script th:src="@{/js/bootstrap.js}"></script>	
+		<script th:src="@{/js/admin.js}"></script>	
+	</head>
+	<body>
+	 	<div class="row-fluid">&nbsp;</div>
+		<div class="col-xs-6">
+			<a href = "http://localhost:9999/frmAddCandidato">
+				<button type="button" class="btn btn-success col-xs-3"><span class="glyphicon glyphicon-plus">
+					</span> Novo
+				</button>
+			</a>
+		</div>
+		<div class="row-fluid">&nbsp;</div>
+		<div class="row-fluid">&nbsp;</div>
+		<div class="col-xs-12">	
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th>Id</th>
+			      <th>Nome</th>
+			      <th>Partido</th>
+			      <th>Numero</th>
+			      <th>Caminho da Imagem</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr th:each="c: ${candidatos}">
+			      <td class="col-xs-1" th:text="${c.id}">Oranges</td>
+			      <td th:text="${c.nome}"></td>
+			      <td th:text="${c.partido}"></td>
+			      <td th:text="${c.numero}"></td>
+			      <td th:text="${c.pathImagem}"></td>			     
+			      <td style="text-align: right">
+				      <a th:href="@{http://localhost:9999/frmEditCandidato(id=${c.id})}">
+					      	<button class="btn btn-primary"><span class="glyphicon glyphicon-pencil
+					      	"></span></button>
+				      </a>		    
+			      	  <button class="btn btn-danger" th:onclick="'javascript:mostraModalExcluir(\'' + ${c.id} + '\');'" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span></button>
+			      </td>	
+			    	<div class="modal fade" tabindex="-1" role="dialog" th:id="${c.id}">
+				      <div class="modal-dialog" role="document">
+				        <div class="modal-content">
+				          <div class="modal-header">
+				            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				            <h4 class="modal-title">Atenção!</h4>
+				          </div>
+				          <div class="modal-body">
+				            <p>Deseja realmente excluir o registro?</p>
+				          </div>
+				          <div class="modal-footer">
+				           	<button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+				           	<a id = "btn" th:href="@{http://localhost:9999/deleteCandidato(id=${c.id})}">
+			          		 <button type="button" class="btn btn-danger">Excluir</button>
+				           	</a>            
+				          </div>
+				        </div>
+				      </div>
+				    </div>	     
+			    </tr>
+			  </tbody>
+			</table>
+		</div>	
+	</body>
+</html>
