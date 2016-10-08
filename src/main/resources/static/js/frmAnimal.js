@@ -1,5 +1,4 @@
-var idExcluir;
-
-var setIdExcluir = function(id){
-	idExcluir = id;
+var mostraModalExcluir = function(id) {
+	
+	$('#' + id).modal('show');
 }

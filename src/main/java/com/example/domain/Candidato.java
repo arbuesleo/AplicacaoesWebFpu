@@ -14,7 +14,7 @@ public class Candidato {
 	String partido;
 	Integer numero;
 	String pathImagem;
-	Float votos = 0.00000000f;
+	Float votos;
 	
 	public Candidato(Integer id, String nome, String partido, Integer numero, String pathImagem, Float votos) {
 		super();
@@ -70,6 +70,6 @@ public class Candidato {
 	}
 	
 	public void addVoto(){
-		this.votos = this.votos + 1.0000000001f;
+		this.votos = this.votos + 1.00f;
 	}
 }

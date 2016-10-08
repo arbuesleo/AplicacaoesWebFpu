@@ -44,7 +44,11 @@ public class CandidatoController {
 	
 	@PostMapping("/frmSaveCandidato")
 	public String candidatoSubmit(@ModelAttribute Candidato candidato, Model model) {
-		candidato.setVotos(0.0000001f);
+		if (candidato.getId() == 0)
+			candidato.setVotos(0.00f);
+		else
+			candidato.setVotos(candidatoRepo.findById(candidato.getId()).getVotos());
+		
 		candidatoRepo.save(candidato);
 		return this.candidatoGet(model);
 	}

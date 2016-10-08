@@ -21,8 +21,8 @@
 					<h4 th:text="${'Número de Votos: ' + #numbers.formatInteger(c.votos, 0)}"></h4>
 					<div class="progress">
 						  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0" 
-						  aria-valuemax="100" th:style="'width: '+ ${(c.votos / #aggregates.sum(candidatos.![votos])) * 100} + '%;'" 
-						  th:text="${#numbers.formatDecimal(((c.votos / #aggregates.sum(candidatos.![votos])) * 100), 1, 4)} + '%'">						  
+						  aria-valuemax="100" th:style="'width: '+ ${(c.votos * 100) / #aggregates.sum(candidatos.![votos])} + '%;'" 
+						  th:text="${#numbers.formatDecimal(((c.votos * 100) / #aggregates.sum(candidatos.![votos])), 1, 2)} + '%'">						  
 						    10%
 						  </div>
 					</div>																		
